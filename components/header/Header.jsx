@@ -1,5 +1,10 @@
+import categories from '@/utils/desplayData';
 import { SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server';
+import { FacebookIcon, InstagramIcon, Search, ShoppingBag } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '../ui/button';
 
 const Header = async () => {
 
@@ -7,17 +12,38 @@ const Header = async () => {
 
 
     return (
-        <div>
-            <div className="bg-gray-400 w-full p-5">
-                <div className="flex justify-between w-10/12 mx-auto">
-                    <h1>Logo</h1>
-                    <div className="">
-                        {!userId ? <SignInButton /> 
-                        : <div className="app">
-                            <SignedOut>
-                            </SignedOut>
-                            <UserButton />
-                        </div>}
+        <div className=''>
+            <div className="flex justify-between w-10/12 mx-auto my-2">
+                <h1 className='uppercase'>Discover The New You</h1>
+                <div className="flex gap-3 items-center">
+                    <p><FacebookIcon></FacebookIcon></p>
+                    <p><InstagramIcon></InstagramIcon></p>
+                </div>
+            </div>
+            <div className="bg-black w-full py-5 text-gray-100">
+                <div className="flex justify-between w-10/12 mx-auto items-center">
+                    <Image
+                        src={'/desi-deals.jpg'}
+                        height={100}
+                        width={150}
+                        alt='Brand Logo'
+                    ></Image>
+                    <div className="text-sm text-[#c7cbce] flex flex-wrap gap-3 items-center justify-start">
+                        {categories.slice(0, 10).map(category => <Link href={`/category/${category.category}`} className='mr-3' key={category?.id}>{category?.category}</Link>)}
+                    </div>
+
+                    <div className="flex justify-center items-center gap-2">
+                        <p><Search /></p>
+                        <div className="flex items-center">
+                            {!userId ? <Button><SignInButton /></Button>
+                                : <div className="app">
+                                    <SignedOut>
+                                    </SignedOut>
+                                    <UserButton />
+                                </div>}
+                        </div>
+                        <p className='text-sm'>$0.00</p>
+                        <p><ShoppingBag /></p>
                     </div>
                 </div>
             </div>

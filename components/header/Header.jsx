@@ -4,7 +4,6 @@ import { auth } from '@clerk/nextjs/server';
 import { FacebookIcon, InstagramIcon, Search, ShoppingBag } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../ui/button';
 
 const Header = async () => {
 
@@ -28,14 +27,16 @@ const Header = async () => {
                         width={150}
                         alt='Brand Logo'
                     ></Image>
-                    <div className="text-sm text-[#c7cbce] flex flex-wrap gap-3 items-center justify-start">
+                    <div className="hidden text-sm text-[#c7cbce] md:flex flex-wrap gap-3 items-center justify-start">
                         {categories.slice(0, 10).map(category => <Link href={`/category/${category.category}`} className='mr-3' key={category?.id}>{category?.category}</Link>)}
                     </div>
 
                     <div className="flex justify-center items-center gap-2">
                         <p><Search /></p>
                         <div className="flex items-center">
-                            {!userId ? <Button><SignInButton /></Button>
+                            {!userId ? <div className="text-sm w-16 justify-center flex items-center">
+                                <SignInButton />
+                            </div>
                                 : <div className="app">
                                     <SignedOut>
                                     </SignedOut>

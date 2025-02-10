@@ -21,12 +21,14 @@ const Header = async () => {
             </div>
             <div className="bg-black w-full py-5 text-gray-100">
                 <div className="flex justify-between w-10/12 mx-auto items-center">
+                    <Link href={"/"}>
                     <Image
                         src={'/desi-deals.jpg'}
                         height={100}
                         width={150}
                         alt='Brand Logo'
                     ></Image>
+                    </Link>
                     <div className="hidden text-sm text-[#c7cbce] md:flex flex-wrap gap-3 items-center justify-start">
                         {categories.slice(0, 10).map(category => <Link href={`/category/${category.category}`} className='mr-3' key={category?.id}>{category?.category}</Link>)}
                     </div>

@@ -30,7 +30,7 @@ const Header = async () => {
                     ></Image>
                     </Link>
                     <div className="hidden text-sm text-[#c7cbce] md:flex flex-wrap gap-3 items-center justify-start">
-                        {categories.slice(0, 10).map(category => <Link href={`/category/${category.category}`} className='mr-3' key={category?.id}>{category?.category}</Link>)}
+                        {categories.slice(0, 10).map(category => <Link href={category?.href} className='mr-3' key={category?.id}>{category?.category}</Link>)}
                     </div>
 
                     <div className="flex justify-center items-center gap-2">

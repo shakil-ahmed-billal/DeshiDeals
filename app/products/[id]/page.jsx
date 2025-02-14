@@ -10,7 +10,7 @@ const page = async ({ params }) => {
     console.log(data);
     const { name, images , price , currency} = data || {}
     return (
-        <div className="w-10/12 mx-auto grid grid-cols-2 gap-5 mt-5">
+        <div className="grid grid-cols-2 gap-5 mt-5">
             <img src={images[0]?.url} alt="" />
             <div className="">
                 <p className="text-2xl font-semibold">{name}</p>

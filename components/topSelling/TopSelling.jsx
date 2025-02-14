@@ -3,7 +3,7 @@ import ProductCard from "../productCard/ProductCard";
 
 const TopSelling = async () => {
     const products = await allProducts()
-    console.log(products);
+
 
     return (
         <div className="flex gap-5 flex-wrap">

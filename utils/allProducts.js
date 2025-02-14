@@ -1,9 +1,10 @@
 import dbConnect from "@/lib/dbConnect";
+import axios from "axios";
 
 const allProducts = async () => {
 
     try {
-        const data = await dbConnect("products").find({}).toArray()
+        const {data} = await axios(`${process.env.LIVE_LINK}/api/products`)
         return data
     } catch (error) {
         console.log(error);
